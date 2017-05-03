@@ -1,6 +1,6 @@
 # FDA_project_group_XN
 
-Welcome！ This is our group project for Financial Data Analysis. 📖
+Welcome! This is our group project for Financial Data Analysis. 📖
 
 Project name : TBA
 

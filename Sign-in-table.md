@@ -4,7 +4,7 @@
 
 | **Member Name** |   **Status**   |
 |:---------------:|:--------------:|
-| Yuzhu Cai       |                |
-| Hongchi Li      |                |
+| Yuzhu Cai       |       O        |
+| Hongchi Li      |       O        |
 | Xu Ning         |       √        |
-| Zheng Xue       |   $\beta$      |
+| Zheng Xue       |       O        |
