@@ -1,6 +1,6 @@
 # Sign-In Table
 
-！[image](https://github.com/xuning28/FDA_project_group_XN/raw/master/img/sign_in.png)
+！[image](https://github.com/xuning28/FDA_project_group_XN/blob/master/img/sign_in.png)
 
 | **Member Name** |   **Status**   |
 |:---------------:|:--------------:|
