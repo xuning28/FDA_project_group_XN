@@ -7,4 +7,4 @@
 | Yuzhu Cai       |       O        |
 | Hongchi Li      |       O        |
 | Xu Ning         |       √        |
-| Zheng Xue       |       O        |
+| Zheng Xue       |       √        |
