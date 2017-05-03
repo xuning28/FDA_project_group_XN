@@ -5,6 +5,6 @@
 | **Member Name** |   **Status**   |
 |:---------------:|:--------------:|
 | Yuzhu Cai       |       O        |
-| Hongchi Li      |       O        |
+| Hongchi Li      |       √        |
 | Xu Ning         |       √        |
 | Zheng Xue       |       √        |
