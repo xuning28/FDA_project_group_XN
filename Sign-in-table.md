@@ -1,6 +1,6 @@
 # Sign-In Table
 
-！[alt text](https://github.com/xuning28/FDA_project_group_XN/blob/master/img/sign_in.png)
+![](http://www.baidu.com/img/bdlogo.gif)  
 
 | **Member Name** |   **Status**   |
 |:---------------:|:--------------:|
