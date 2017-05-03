@@ -1,6 +1,8 @@
 # Sign-In Table
 
+<div  align="center">    
 ![alt text](https://github.com/xuning28/FDA_project_group_XN/raw/master/img/sign_in.jpeg =100*20)
+</div>
 
 | **Member Name** |   **Status**   |
 |:---------------:|:--------------:|
