@@ -4,7 +4,7 @@
 
 | **Member Name** |   **Status**   |
 |:---------------:|:--------------:|
-| Yuzhu Cai       |       hello√        |
+| Yuzhu Cai       |       hello everyone√        |
 | Hongchi Li      |       √        |
 | Xu Ning         |       √        |
 | Zheng Xue       |       √        |
