@@ -11,11 +11,11 @@ lgreturn = diff(log(AMZN$close))*100
 AMZN = AMZN[-1,]
 year = year(AMZN$date)
 AMZN = data.frame(AMZN,lgreturn,year)
-mean = round(aggregate(cbind(AMZN$lgreturn) ~ year, data = AMZN, FUN = "mean"),4)
-sd = round(aggregate(cbind(AMZN$lgreturn) ~ year, data = AMZN, FUN = "sd"),4)
-sample = as.numeric(table(year(AMZN$date)))
-stat = data.frame(mean$year, sample, mean$V1, sd$V1)
-stat[8,] = c("2010-2016",sum(sample),round(mean(AMZN$lgreturn),4),round(sd(AMZN$lgreturn),4))
+yearmean = round(aggregate(cbind(AMZN$lgreturn) ~ year, data = AMZN, FUN = "mean"),4)
+yearsd = round(aggregate(cbind(AMZN$lgreturn) ~ year, data = AMZN, FUN = "sd"),4)
+yearsample = as.numeric(table(year(AMZN$date)))
+stat = data.frame(yearmean$year, yearsample, yearmean$V1, yearsd$V1)
+stat[8,] = c("2010-2016",sum(yearsample),round(mean(AMZN$lgreturn),4),round(sd(AMZN$lgreturn),4))
 names(stat) = c("Year","Sample","Mean(%)","Sd(%)")
 xtable(stat,caption = "Descriptive Statistics of AMZN",align = "ccccc",label = NULL)
 

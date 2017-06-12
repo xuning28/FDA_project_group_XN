@@ -11,11 +11,11 @@ lgreturn = diff(log(WMT$close))*100
 WMT = WMT[-1,]
 year = year(WMT$date)
 WMT = data.frame(WMT,lgreturn,year)
-mean = round(aggregate(cbind(WMT$lgreturn) ~ year, data = WMT, FUN = "mean"),4)
-sd = round(aggregate(cbind(WMT$lgreturn) ~ year, data = WMT, FUN = "sd"),4)
-sample = as.numeric(table(year(WMT$date)))
-stat = data.frame(mean$year, sample, mean$V1, sd$V1)
-stat[8,] = c("2010-2016",sum(sample),round(mean(WMT$lgreturn),4),round(sd(WMT$lgreturn),4))
+yearmean = round(aggregate(cbind(WMT$lgreturn) ~ year, data = WMT, FUN = "mean"),4)
+yearsd = round(aggregate(cbind(WMT$lgreturn) ~ year, data = WMT, FUN = "sd"),4)
+yearsample = as.numeric(table(year(WMT$date)))
+stat = data.frame(yearmean$year, yearsample, yearmean$V1, yearsd$V1)
+stat[8,] = c("2010-2016",sum(yearsample),round(mean(WMT$lgreturn),4),round(sd(WMT$lgreturn),4))
 names(stat) = c("Year","Sample","Mean(%)","Sd(%)")
 xtable(stat,caption = "Descriptive Statistics of WMT",align = "ccccc",label = NULL)
 
