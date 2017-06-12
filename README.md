@@ -6,6 +6,4 @@ Project name : TBA
 
 Group members : Yuzhu Cai, Hongchi Li, Xu Ning, Zheng Xue
 
-Please feel free to contact me at ningxu2008@163.com, if you have any problem about our project.
-
-Or you can contact other collaborators at 123456@789.com
+Please feel free to contact all collaboratoes at ningxu2008@163.com, if you have any problem about our project.
