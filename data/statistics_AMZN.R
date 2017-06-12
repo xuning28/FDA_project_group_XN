@@ -21,7 +21,7 @@ xtable(stat,caption = "Descriptive Statistics of AMZN",align = "ccccc",label = N
 
 # time plot
 tslgreturn = xts(AMZN$lgreturn,order.by = AMZN$date)
-plot((AMZN$lgreturn)/100~AMZN$date, xlab="TIME", ylab="Log Return", col="blue", type="l")
+plot((AMZN$lgreturn)/100~AMZN$date, xlab="TIME", ylab="AMZN Log Return", col="blue", type="l")
 
 # acf & pacf
 layout(matrix(c(1,2,3,4),nr=2,byrow=T))

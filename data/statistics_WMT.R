@@ -21,7 +21,7 @@ xtable(stat,caption = "Descriptive Statistics of WMT",align = "ccccc",label = NU
 
 # time plot
 tslgreturn = xts(WMT$lgreturn,order.by = WMT$date)
-plot((WMT$lgreturn)/100~WMT$date, xlab="TIME", ylab="Log Return", col="blue", type="l")
+plot((WMT$lgreturn)/100~WMT$date, xlab="TIME", ylab="WMT Log Return", col="brown", type="l")
 
 # acf & pacf
 layout(matrix(c(1,2,3,4),nr=2,byrow=T))
