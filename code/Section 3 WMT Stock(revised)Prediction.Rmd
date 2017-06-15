@@ -1,0 +1,47 @@
+---
+title: "Model Establishment for WMT Stock"
+author: "group project"
+date: "2017-06-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Testing ARCH Effects
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+library(TSA)
+library(xts)
+library(xtable)
+library(lubridate)
+library(readxl)
+WMT <- read_excel("F:/CUEB/Junior/SPRING/FDA/FDA_project_group_XN/data/WMT.xlsx",col_types = c("date", "numeric", "numeric", "numeric", "numeric", "numeric"))
+WMT = WMT[-1763:-1764,]
+lgreturn = diff(log(WMT$close))*100
+
+at = lgreturn-mean(lgreturn)
+Box.test(at^2,lag=5,type='Ljung') # perform a Ljung Box test to test ARCH effects
+```
+
+## GARCH Modelling
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+library(fGarch)
+
+m1 = garchFit(~ garch(1,0), data = lgreturn/100, cond.dist = "norm") # Fit an ARCH(1) model
+summary(m1)
+
+m2 = garchFit(~ garch(1,1), data = lgreturn/100, cond.dist = "norm") # Fit a GARCH(1,1) model
+summary(m2)
+
+```
+
+## Predict
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+sigma2=predict(m2,50)
+print(sigma2)
+library(sciplot)
+plot(sigma2$meanForecast,ylim=c(-0.05,0.05),type = "l")
+lines(c(1:50),sigma2$meanForecast+1.96*sigma2$meanError,col='blue')
+lines(c(1:50),sigma2$meanForecast-1.96*sigma2$meanError,col='blue')
+```
