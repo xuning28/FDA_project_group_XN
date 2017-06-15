@@ -112,8 +112,10 @@ The Ljung–Box statistics of the $a_t^2$ series shows ARCH effects with Q(5) = 
 
 \subsection{Volatility Equation}
 Here we entertain an ARCH(1) model and a GARCH(1,1) model for the volatility and we specify the model as the following:
-\[ r_t = \mu+a_t, a_t = \sigma_t \epsilon_t \]\[ \text{ARCH(1): } \sigma_t^2 = \alpha_0+\alpha_1 a_{t-1}^2 \]
-\[ \text{GARCH(1,1): } \sigma_t^2= \alpha_0+\alpha_1 a_{t-1}^2+\beta_1 \sigma_{t-1}^2 \]in which $\epsilon_t$, here in our model, we assume as a Gaussian innovation that is independent and identically distributed as a Normal distribution with mean 0 and variance 1.
+\[ r_t = \mu+a_t, a_t = \sigma_t \epsilon_t \]
+\[ \text{ARCH(1): } \sigma_t^2 = \alpha_0+\alpha_1 a_{t-1}^2 \]
+\[ \text{GARCH(1,1): } \sigma_t^2= \alpha_0+\alpha_1 a_{t-1}^2+\beta_1 \sigma_{t-1}^2 \]
+in which $\epsilon_t$, here in our model, we assume as a Gaussian innovation that is independent and identically distributed as a Normal distribution with mean 0 and variance 1.
 
 \section{Estimation}
 
@@ -168,9 +170,13 @@ Bayesian Inf. Crit. & 4.243 & 4.242 \\
 
 Based on the results of log likelihood, AIC, and BIC for ARCH(1) model and GARCH(1,1) model, GARCH(1,1) is slightly more appropriate.
 
-Consequently, we obtain a GARCH(1,1) to model the volatility:\[ \sigma_t^2 = 1.0199+0.1286 a_{t-1}^2+0.6373\sigma_{t-1}^2 \]
+Consequently, we obtain a GARCH(1,1) to model the volatility:
+\[ \sigma_t^2 = 1.0199+0.1286 a_{t-1}^2+0.6373\sigma_{t-1}^2 \]
 
-where the standard errors of the parameters are 0.3435, 0.0315, 0.0984, respectively.In conclusion, we propose the following mean equation and conditional heteroskedasticity model for AMZN stock\[ r_t = 0.1367+a_t, \sigma_t^2 = 1.0199+0.1286a_{t-1}^2+0.6373\sigma_{t-1}^2. \]
+where the standard errors of the parameters are 0.3435, 0.0315, 0.0984, respectively.
+
+In conclusion, we propose the following mean equation and conditional heteroskedasticity model for AMZN stock
+\[ r_t = 0.1367+a_t, \sigma_t^2 = 1.0199+0.1286a_{t-1}^2+0.6373\sigma_{t-1}^2. \]
 
 \begin{table}[!htbp] \centering 
   \caption{Ljung-Box tests for ARCH(1) and GARCH(1,1) models for WMT Stock} 
@@ -220,9 +226,15 @@ Bayesian Inf. Crit. & 2.860 & 2.863 \\
 \end{tabular} 
 \end{table} 
 
-Following the same logic as in the previous section, we select ARCH(1) model for WMT Stock. Since there’s little difference between these two models based on their log likelihood, AIC, and BIC, our selection is rather subjective.Consequently, we obtain a ARCH(1) to model the volatility:\[ \sigma_t^2 = 0.1286+0.1920 a_{t-1}^2 \]
+Following the same logic as in the previous section, we select ARCH(1) model for WMT Stock. Since there’s little difference between these two models based on their log likelihood, AIC, and BIC, our selection is rather subjective.
 
-where the standard errors of the parameters are 0.0358, and 0.03389, respectively.In conclusion, we propose the following mean equation and conditional heteroskedasticity model for AMZN stock\[ r_t = 0.0372+a_t, \sigma_t^2 = 0.1286+0.1920a_{t-1}^2. \]
+Consequently, we obtain a ARCH(1) to model the volatility:
+\[ \sigma_t^2 = 0.1286+0.1920 a_{t-1}^2 \]
+
+where the standard errors of the parameters are 0.0358, and 0.03389, respectively.
+
+In conclusion, we propose the following mean equation and conditional heteroskedasticity model for AMZN stock
+\[ r_t = 0.0372+a_t, \sigma_t^2 = 0.1286+0.1920a_{t-1}^2. \]
 
 \section{Model Checking}
 
