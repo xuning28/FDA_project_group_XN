@@ -25,7 +25,7 @@ plot((AMZN$lgreturn)/100~AMZN$date, xlab="TIME", ylab="AMZN Log Return", col="bl
 
 # acf & pacf
 layout(matrix(c(1,2,3,4),nr=2,byrow=T))
-acf(lgreturn, main = "Log Return")
-pacf(lgreturn, main = "Log Return")
-acf(lgreturn^2, main = "Squared Log Return")
-pacf(lgreturn^2, main = "Squared Log Return")
+acf(lgreturn, main = "(a) Log Return")
+pacf(lgreturn, main = "(b) Log Return")
+acf(lgreturn^2, main = "(c) Squared Log Return")
+pacf(lgreturn^2, main = "(d) Squared Log Return")

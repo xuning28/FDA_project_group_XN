@@ -19,15 +19,21 @@ Comparative Analysis of Amazon and Walmart Stocks
 \begin{document}
 \maketitle
 \section{Introduction}
+Online consumption is a relative new and prevailing concept raised in recent decade. Amazon is arguably one of the most successful online firms. As of this writing, its market cap is over \$460 billion, almost twice than the large and well-known offline retailer, Wal-Mart's, with market cap about \$240 billion.
+Amazon, as a business model, has many potential advantages relative to a physical operation. It held out the potential of lower inventory and distribution costs and reduced overhead. Consumers could find the books products they were looking for more easily and a broader variety could be offered for sale in the first place. It could accept and fulfill orders from almost any domestic location with equal ease. And most purchases made on its site would be exempt from sales tax.
+On the other hand, it is also acknowledged that there are some limitations of online operations. Customers would have to wait for their orders to be received, processed, and shipped. Because they couldn't physically inspect a product before ordering, Amazon would have to make its returns and redress processes transparent and reliable, and offer other ways for consumers to learn as much about the product as possible before buying.The task to judge the performance of online consumption against offline consumption is compelling. And the methods of judgments comparisons can be diverged. In this term paper, our group conducts time series data models with conditional heteroscedasticity, which are widely applied in financial data analysis, to depict the stock volatility of Amazon and Wal-Mart's.
+
+The historical stock price data presents a diverged trend that seems to reveal a competitive relation between Amazon and Wal-Mart. Admittedly the share price cannot represent complete information about the firms, such as market shares. Nevertheless, this is a direct and prevalent way to evaluate firms' performance through numerical results. And the maximize likelihood method (MLE) estimations will also provide helpful suggestions about their prospective performance.
+We organize our discussion as follows. The next section lays out some basic facts about the historical stock price data: statistics and time plots. Section 3 discusses how to determine the specifications of models. Section 4 conducts MLE method to estimate the parameters of models. Section 5 explores future performance and compares our prediction with recent data. A short concluding section follows.
 
 \section{Data Processing}
-In our research report, we use Walmart as the representative of offline seller and Amazon as that of online seller. We focus on the daily log return of the Walmart stock and Amazon stock from January 3th, 2010 to December 30th, 2016, with 1761 observations. All the data are pulled from Wind Financial Terminal.
+In our research report, we use Walmart as the representative of offline retail industry and Amazon as that of online retail industry. We focus on the daily log return of Walmart stock and Amazon stock from January 3th, 2010 to December 30th, 2016, with 1761 observations. All the data are pulled from Wind Terminal.
 
-Let $r_t$ be the log return of an asset at time $t$, and the formula we use to calculate the log return is
+We compute the daily log return based on the  daily close price. Let $r_t$ be the log return of an asset at time $t$, and the formula we use to calculate the log return is
 \[ r_t = ln(\frac{p_t}{p_{t-1}}) \times 100\% \]
 where $p_t$ is the close price in day $t$ and $p_{t-1}$ is the close price in day {t-1}.
 
-The descriptive statistics and time plot are shown in Table \ref{ds} and Firgure \ref{tp}.
+The descriptive statistics and time plots are shown in Table \ref{ds} and Firgure \ref{tp}.
 
 \begin{table}[!htbp]
 \caption{Descriptive Statistics}  
@@ -85,11 +91,11 @@ Year & Sample & Mean(\%) & Sd(\%) \\
 \label{tp}
 \end{figure}
 
-From Table 1, we provide the mean log return and its standard deviation for each stock, and Figure 1 shows the time plots of the log returns for Amazon and Walmart. From the plots, the return series for both stocks appear to be stationary and random.
+From Table \ref{ds}, we can easily see that both returns of these two stocks display an increasing trend from 2010 to 2016. However, the average log return of Amazon stock  is four times greater than Walmart stock, while the log return of Walmart stock is more stable than Amazon's. From the timeplots in Figure \ref{tp}, the log return series for both stocks appear to be relatively stationary over times, fluctuating around the mean value.
 
 \section{Model Establishment}
 \subsection{Model Specification}
-Figure \ref{cf_AMZN}.(a) shows the sample ACF of the log returns for Amazon stock, which suggests no significant serial correlations. Figure \ref{cf_AMZN}.(b), showing the sample PACF of the log returns, also confirms our conclusion of no serial correlation. Then, we plot the sample ACF of the squared log returns for Amazon stock in Figure \ref{cf_AMZN}.(c). Combing the three plots, it seems that the log returns are neither serially correlated nor dependent. Similar results can also be found for Walmart stock in Figure \ref{cf_WMT} that the log returns for Walmart stock are serially uncorrelated and independent.
+First of all, we determine the model to capture the log return fluctuation of Amazon stock. Figure \ref{cf_AMZN}.(a) shows the sample ACF of the log returns, which suggests that there is no significant serial correlations. Figure \ref{cf_AMZN}.(b), showing the sample PACF of the log returns, also confirms our conclusion of no serial correlation. Then, we plot the sample ACF of the squared log returns for Amazon stock in Figure \ref{cf_AMZN}.(c). Combing the three plots, it seems that the log returns are neither serially correlated nor dependent. Similar results can also be found for Walmart stock in Figure \ref{cf_WMT} that the log returns for Walmart stock are serially uncorrelated and independent.
 
 \begin{figure}[!htbp]
 \centering
@@ -236,8 +242,6 @@ where the standard errors of the parameters are 0.0358, and 0.03389, respectivel
 In conclusion, we propose the following mean equation and conditional heteroskedasticity model for AMZN stock
 \[ r_t = 0.0372+a_t, \sigma_t^2 = 0.1286+0.1920a_{t-1}^2. \]
 
-\section{Model Checking}
-
 \section{Prediction}
 
 \section{Conclusion}
@@ -247,6 +251,5 @@ In conclusion, we propose the following mean equation and conditional heterosked
 \begin{thebibliography}{99}
 \bibitem{1} hahahahahahahaha
 \end{thebibliography}
-
 
 \end{document}
