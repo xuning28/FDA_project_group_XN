@@ -18,6 +18,8 @@ Comparative Analysis of Amazon and Walmart Stocks
 
 \begin{document}
 \maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%   Introduction   %%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 Online consumption is a relative new and prevailing concept raised in recent decade. Amazon is arguably one of the most successful online firms. As of this writing, its market cap is over \$460 billion, almost twice than the large and well-known offline retailer, Wal-Mart's, with market cap about \$240 billion.
 Amazon, as a business model, has many potential advantages relative to a physical operation. It held out the potential of lower inventory and distribution costs and reduced overhead. Consumers could find the books products they were looking for more easily and a broader variety could be offered for sale in the first place. It could accept and fulfill orders from almost any domestic location with equal ease. And most purchases made on its site would be exempt from sales tax.
@@ -26,6 +28,7 @@ Online consumption is a relative new and prevailing concept raised in recent dec
 The historical stock price data presents a diverged trend that seems to reveal a competitive relation between Amazon and Wal-Mart. Admittedly the share price cannot represent complete information about the firms, such as market shares. Nevertheless, this is a direct and prevalent way to evaluate firms' performance through numerical results. And the maximize likelihood method (MLE) estimations will also provide helpful suggestions about their prospective performance.
 We organize our discussion as follows. The next section lays out some basic facts about the historical stock price data: statistics and time plots. Section 3 discusses how to determine the specifications of models. Section 4 conducts MLE method to estimate the parameters of models. Section 5 explores future performance and compares our prediction with recent data. A short concluding section follows.
 
+%%%%%%%%%%%%%%%%%%%%%%   Data Processing   %%%%%%%%%%%%%%%%%%%%%%%
 \section{Data Processing}
 In our research report, we use Walmart as the representative of offline retail industry and Amazon as that of online retail industry. We focus on the daily log return of Walmart stock and Amazon stock from January 3th, 2010 to December 30th, 2016, with 1761 observations. All the data are pulled from Wind Terminal.
 
@@ -93,41 +96,44 @@ Year & Sample & Mean(\%) & Sd(\%) \\
 
 From Table \ref{ds}, we can easily see that both returns of these two stocks display an increasing trend from 2010 to 2016. However, the average log return of Amazon stock  is four times greater than Walmart stock, while the log return of Walmart stock is more stable than Amazon's. From the timeplots in Figure \ref{tp}, the log return series for both stocks appear to be relatively stationary over times, fluctuating around the mean value.
 
+%%%%%%%%%%%%%%%%%%%%%  Model Establishment   %%%%%%%%%%%%%%%%%%%%%%
 \section{Model Establishment}
 \subsection{Model Specification}
-First of all, we determine the model to capture the log return fluctuation of Amazon stock. Figure \ref{cf_AMZN}.(a) shows the sample ACF of the log returns, which suggests that there is no significant serial correlations. Figure \ref{cf_AMZN}.(b), showing the sample PACF of the log returns, also confirms our conclusion of no serial correlation. Then, we plot the sample ACF of the squared log returns for Amazon stock in Figure \ref{cf_AMZN}.(c). Combing the three plots, it seems that the log returns are neither serially correlated nor dependent. Similar results can also be found for Walmart stock in Figure \ref{cf_WMT} that the log returns for Walmart stock are serially uncorrelated and independent.
+First of all, we determine the model to capture the log return fluctuation of Amazon stock. Figure \ref{cf_AMZN}.(a) shows the sample ACF of the log returns, which suggests that there is no significant serial correlations and the series is stationary. Observing the squared log returns for Amazon stock in Figure \ref{cf_AMZN}.(c) we find that the log returns are not serially correlated but dependent, which indicates the ARCH effect in the return series. Similar results can also be found for Walmart stock in Figure \ref{cf_WMT} that there also exists an ARCH effect in Walmart's return series.
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[scale = 0.7]{img/cf_AMZN}
+\includegraphics[scale = 0.4]{img/cf_AMZN}
 \caption{ACF and PACF of Amazon Stock}
 \label{cf_AMZN}
 \end{figure}
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[scale = 0.7]{img/cf_WMT}
+\includegraphics[scale = 0.4]{img/cf_WMT}
 \caption{ACF and PACF of Walmart Stock}
 \label{cf_WMT}
 \end{figure}
 
 \subsection{Mean Equation}
-The observations above suggest that the daily log returns of Amazon stock follow an ARMA(0,0) model, in other words, a white noise series. This is in agreement with the result suggested by the sample ACF in Figure 2(c) that all sample ACFs are close to zero. Therefore, we propose a mean equation that is simply a constant plus innovations, $r_t = \mu + a_t$, where $r_t$  is the log return of an asset at time $t$, $\mu$ is the estimate we get using a volatility model. The squared series $a_t^2$ is then used to check for conditional heteroscedasticity (ARCH effects). We perform the usual Ljung–Box statistics Q(m) to the $\{a_t^2\}$ series. The null hypothesis is that the first m lags of ACF of the $a_t^2$ series are zero.
+According to the Figure \ref{cf_AMZN}.(b), the daily log returns of Amazon stock follow an ARMA(0,0) model because there is no cutoff in the PACF of log return. Therefore, we propose a mean equation that is simply a constant plus innovations, $r_t = \mu + a_t$, where $r_t$  is the log return of an asset at time $t$, $\mu$ is the estimate of mean log return. 
 
-The Ljung–Box statistics of the $a_t^2$ series shows ARCH effects with Q(5) = 9.6519, the p value of which is close to zero.
+The $a_t^2$ series is then used to check for conditional heteroscedasticity (ARCH effects). To consolidate the observation results in Figure \ref{cf_AMZN}.(c), we perform the Ljung–Box statistics Q(m) to the $\{a_t^2\}$ series. The null hypothesis is that the first m lags of ACF of the $a_t^2$ series are zero. The results of Ljung–Box test shows an ARCH effect exists in this log return series with Q(5) = 9.6519, the p-value of which is close to zero.
 
 \subsection{Volatility Equation}
-Here we entertain an ARCH(1) model and a GARCH(1,1) model for the volatility and we specify the model as the following:
+Based on the Figure \ref{cf_AMZN}.(d), there is a sudden cutoff at lag-1 squared $a_t^2$. Hence, we entertain an ARCH(1) model and a GARCH(1,1) model for the volatility and we specify the model as the following:
 \[ r_t = \mu+a_t, a_t = \sigma_t \epsilon_t \]
 \[ \text{ARCH(1): } \sigma_t^2 = \alpha_0+\alpha_1 a_{t-1}^2 \]
 \[ \text{GARCH(1,1): } \sigma_t^2= \alpha_0+\alpha_1 a_{t-1}^2+\beta_1 \sigma_{t-1}^2 \]
-in which $\epsilon_t$, here in our model, we assume as a Gaussian innovation that is independent and identically distributed as a Normal distribution with mean 0 and variance 1.
+in which $\epsilon_t$, we assume as a Gaussian innovation that is independent and identically distributed follows a Normal distribution with mean zero and variance one.
 
-\section{Estimation}
+%%%%%%%%%%%%%%%%%%%   Comparison & Estimation   %%%%%%%%%%%%%%%%%%%%
+\section{Model Comparison and Estimation}
+To determine the more adequate model for Amazon stock, we perform the Ljung-Box test for the standardized residuals and the squared standardized residuals. However, there is no evident difference between ARCH(1) model and GARCH(1,1) model according to the test results in Table \ref{lb_AMZN}. Then we use log likelihhod and information criteria to compare models and derive the estimation results in Table \ref{est_AMZN}.
 
 \begin{table}[!htbp] \centering 
   \caption{Ljung-Box tests for ARCH(1) and GARCH(1,1) models for AMZN Stock} 
-  \label{} 
+  \label{lb_AMZN} 
 \begin{tabular}{cc|cccccc} 
 \\[-1.8ex]\hline 
 \hline
@@ -145,7 +151,7 @@ in which $\epsilon_t$, here in our model, we assume as a Gaussian innovation tha
 
 \begin{table}[!htbp] \centering 
   \caption{Results of Estimation of Two Volatility Models for AMZN Stock} 
-  \label{} 
+  \label{est_AMZN} 
 \begin{tabular}{@{\extracolsep{5pt}}lcc} 
 \\[-1.8ex]\hline 
 \hline
@@ -153,19 +159,15 @@ in which $\epsilon_t$, here in our model, we assume as a Gaussian innovation tha
 \hline \\[-1.8ex] 
  mu & 0.115$^{**}$ & 0.137$^{***}$ \\ 
   & (0.046) & (0.046) \\ 
-  & & \\ 
  omega & 3.515$^{***}$ & 1.020$^{***}$ \\ 
   & (0.149) & (0.344) \\ 
-  & & \\ 
  alpha1 & 0.168$^{***}$ & 0.129$^{***}$ \\ 
   & (0.036) & (0.032) \\ 
-  & & \\ 
  beta1 &  & 0.637$^{***}$ \\ 
   &  & (0.098) \\ 
-  & & \\ 
 \hline \\[-1.8ex] 
 Observations & 1761 & 1761 \\ 
-Log Likelihood & 3724.855 & 3720.010 \\ 
+Log Likelihood & -3724.855 & -3720.010 \\ 
 Akaike Inf. Crit. & 4.234 & 4.229 \\ 
 Bayesian Inf. Crit. & 4.243 & 4.242 \\ 
 \hline 
@@ -174,26 +176,25 @@ Bayesian Inf. Crit. & 4.243 & 4.242 \\
 \end{tabular} 
 \end{table} 
 
-Based on the results of log likelihood, AIC, and BIC for ARCH(1) model and GARCH(1,1) model, GARCH(1,1) is slightly more appropriate.
+Based on the results in Table \ref{est_AMZN}, GARCH(1,1) model is more appropriate because it has the largest value of Log Likelihood and the smallest value of AIC and BIC. And all estimated parameters are highly significant under 1\% significance level.
 
-Consequently, we obtain a GARCH(1,1) to model the volatility:
-\[ \sigma_t^2 = 1.0199+0.1286 a_{t-1}^2+0.6373\sigma_{t-1}^2 \]
+Consequently, we propose an ARMA(0,0)+GARCH(1,1) model to depict the log return series of Amazon stock:
+\[ r_t = 0.137+a_t\]
+\[ a_t = \sigma_t \epsilon_t, \epsilon_t \sim N(0,1) \]
+\[ \sigma_t^2 = 1.02+0.129a_{t-1}^2+0.637\sigma_{t-1}^2 \]
 
-where the standard errors of the parameters are 0.3435, 0.0315, 0.0984, respectively.
-
-In conclusion, we propose the following mean equation and conditional heteroskedasticity model for AMZN stock
-\[ r_t = 0.1367+a_t, \sigma_t^2 = 1.0199+0.1286a_{t-1}^2+0.6373\sigma_{t-1}^2. \]
+Following the same logic as in the previous section, we select ARCH(1) model for WMT Stock. Since there’s little difference between these two models based on their log likelihood, AIC, and BIC, our selection is rather subjective.
 
 \begin{table}[!htbp] \centering 
   \caption{Ljung-Box tests for ARCH(1) and GARCH(1,1) models for WMT Stock} 
-  \label{} 
+  \label{lb_WMT} 
 \begin{tabular}{cc|cccccc} 
 \\[-1.8ex]\hline 
 \hline
 & & \multicolumn{3}{c}{Standardized residuals} & \multicolumn{3}{c}{Squared standardized residuals} \\
 & & Q(10) & Q(15) & Q(20) & Q(10) & Q(15) & Q(20) \\
 \hline 
-\multirow{2}{*}{ARCH(1)} & statistic & 9,0085 & 15.1256 & 20.0360 & 2.1312 & 2.4483 & 4.4991 \\
+\multirow{2}{*}{ARCH(1)} & statistic & 9.0085 & 15.1256 & 20.0360 & 2.1312 & 2.4483 & 4.4991 \\
 & p-value & 0.5313 & 0.4424 & 0.4557 & 0.9952 & 0.9999 & 0.9999 \\
 \multirow{2}{*}{GARCH(1,1)} & statistic & 8.8064 & 14.4575 & 18.5378 & 1.6428 & 1.9398 & 4.0184 \\
 & p.value & 0.5506 & 0.4912 & 0.5520 & 0.9984 & 0.9999 & 0.9999 \\
@@ -204,23 +205,19 @@ In conclusion, we propose the following mean equation and conditional heterosked
 
 \begin{table}[!htbp] \centering 
   \caption{Results of Estimation of Two Volatility Models for WMT Stock} 
-  \label{} 
+  \label{est_WMT} 
 \begin{tabular}{@{\extracolsep{5pt}}lcc} 
 \\[-1.8ex]\hline 
 \hline
  & ARCH(1) & GARCH(1,1) \\ 
  mu & 0.037 & 0.033 \\ 
   & (0.023) & (0.024) \\ 
-  & & \\ 
  omega & 0.863$^{***}$ & 0.442$^{**}$ \\ 
   & (0.036) & (0.187) \\ 
-  & & \\ 
  alpha1 & 0.192$^{***}$ & 0.140$^{***}$ \\ 
   & (0.034) & (0.040) \\ 
-  & & \\ 
  beta1 &  & 0.445$^{**}$ \\ 
   &  & (0.207) \\ 
-  & & \\ 
 \hline \\[-1.8ex] 
 Observations & 1761 & 1761 \\ 
 Log Likelihood & 2506.755 & 2506.020 \\ 
@@ -232,20 +229,13 @@ Bayesian Inf. Crit. & 2.860 & 2.863 \\
 \end{tabular} 
 \end{table} 
 
-Following the same logic as in the previous section, we select ARCH(1) model for WMT Stock. Since there’s little difference between these two models based on their log likelihood, AIC, and BIC, our selection is rather subjective.
-
-Consequently, we obtain a ARCH(1) to model the volatility:
-\[ \sigma_t^2 = 0.1286+0.1920 a_{t-1}^2 \]
-
-where the standard errors of the parameters are 0.0358, and 0.03389, respectively.
-
-In conclusion, we propose the following mean equation and conditional heteroskedasticity model for AMZN stock
-\[ r_t = 0.0372+a_t, \sigma_t^2 = 0.1286+0.1920a_{t-1}^2. \]
-
+%%%%%%%%%%%%%%%%%%%%%%   Prediction   %%%%%%%%%%%%%%%%%%%%%%%
 \section{Prediction}
 
+%%%%%%%%%%%%%%%%%%%%%%   Conclusion   %%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
 
+%%%%%%%%%%%%%%%%%%%%%%   Appendix   %%%%%%%%%%%%%%%%%%%%%%%
 \section{Appendix}
 
 \begin{thebibliography}{99}
