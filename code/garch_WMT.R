@@ -9,10 +9,13 @@ load("/FDA_project_group_XN/data/WMT_all.RData")
 at = lgreturn-mean(lgreturn)
 Box.test(at^2,lag=5,type='Ljung') # perform a Ljung Box test to test ARCH effects
 
+## ARMA order
+eacf(lgreturn)
+
 ## GARCH Modelling
 library(fGarch)
 
-m1 = garchFit(~ garch(1,0), data = lgreturn, cond.dist = "norm") # Fit an ARCH(1) model
+m1 = garchFit(~ garch(4,0), data = lgreturn, cond.dist = "norm") # Fit an ARCH(1) model
 summary(m1)
 m2 = garchFit(~ garch(1,1), data = lgreturn, cond.dist = "norm") # Fit a GARCH(1,1) model
 summary(m2)
