@@ -1,0 +1,56 @@
+下面是我做的增加、修改和一些困惑：
+
+1、wmt的code里有一行说明应该是arch（4）不是arch（1）。我改了。
+
+2、有一个问题：test of arch effect里Q（5）order选的是不是有点低？我看Tsay的书P114里用的是Q（12）。但是当我改成12的时候我发现p-value很大，
+就是无法拒绝原假设。我不太懂为啥rou1=...=rou5=0拒绝了但是rou1=。。=rou12=0就无法拒绝了。所以要不然还是lag=5吧。
+下面是我run的结果：
+> at = lgreturn-mean(lgreturn)
+> Box.test(at^2,lag=12,type='Ljung') # perform a Ljung Box test to test ARCH effects
+
+	Box-Ljung test
+
+data:  at^2
+X-squared = 15.655, df = 12, p-value = 0.2076
+
+> at = lgreturn-mean(lgreturn)
+> Box.test(at^2,lag=7,type='Ljung') # perform a Ljung Box test to test ARCH effects
+
+	Box-Ljung test
+
+data:  at^2
+X-squared = 14.742, df = 7, p-value = 0.03945
+
+> Box.test(at^2,lag=10,type='Ljung') # perform a Ljung Box test to test ARCH effects
+
+	Box-Ljung test
+
+data:  at^2
+X-squared = 15.556, df = 10, p-value = 0.1131
+
+> Box.test(at^2,lag=9,type='Ljung') # perform a Ljung Box test to test ARCH effects
+
+	Box-Ljung test
+
+data:  at^2
+X-squared = 14.773, df = 9, p-value = 0.09735
+
+3、我有改动的R code里对每个模型用t innovation估计了一下，虽然adequacy of mean and volatility的model都没有问题，但是从log（likelihood）和AIC,BIC 来看，都
+没有相对应的用normal innovation估计的好。
+
+4、我写了code，分别画了一下AMZN和WMT的2010-2016的estimated standardized residuals和volatility的图。然后写了一些说明性的文字。
+
+5、From Table 1, we can easily see that both returns of these two stocks display an increasing trend from
+2010 to 2016.这句话我觉得不太合适。咱们对mean equation的估计不是constant plus a吗？没有trend的啊？
+
+7、预测那部分我觉得可以像Tsay那本书P138页那样做两个tables。如果只是画图的话，没有比较清晰的数据展示出来。
+
+8、然后我把2017的实际情况和预测的combine了。code写好了。但是我run不出来，就是standard deviation的那两条线显示不出来，只能显示estimated mean和实际return。你看看。
+
+10、我把结论写完了。
+ 
+11、有一个predict的word文档，是泓池写的。你们model的时候，return已经单位是百分之几了，但泓池可能不知道，所以他写的那个数量级有问题。
+我按照我认为正确的数量级在我的word中写了prediction。
+
+12、我觉得有必要写一下估计model时的单位。不然比如说Amazon GARCH(1，1)的mean估计出的是0.137%，但是你那个log return的图里你用的单位又是不带百分号的，所以
+mean是0.00137.所以如果不标注的话，很容易让别人混淆。
