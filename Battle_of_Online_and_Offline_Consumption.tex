@@ -5,6 +5,7 @@
 \RequirePackage{graphicx}
 \RequirePackage{longtable,multirow,hhline,tabularx,array}
 \usepackage[english]{babel} 
+\usepackage{indentfirst}
 \RequirePackage{colortbl,booktabs}
 \linespread{1.5}
 
@@ -99,7 +100,7 @@ Year & Sample & Mean(\%) & Sd(\%) \\
 \label{tp}
 \end{figure}
 
-From Table \ref{ds}, we can easily see that both returns of these two stocks display an increasing trend from 2010 to 2016. However, the average log return of Amazon stock  is four times greater than Walmart stock, while the log return of Walmart stock is more stable than Amazon's. From the timeplots in Figure \ref{tp}, the log return series for both stocks appear to be relatively stationary over times, fluctuating around the mean value.
+From Table \ref{ds}, we can see that the average log return of Amazon stock  is four times greater than Walmart stock, while the log return of Walmart stock is more stable than Amazon's. From the timeplots in Figure \ref{tp}, the log return series for both stocks appear to be relatively stationary over times, fluctuating around the mean value.
 
 %%%%%%%%%%%%%%%%%%%%%  Model Establishment   %%%%%%%%%%%%%%%%%%%%%%
 \section{Model Establishment}
@@ -148,7 +149,7 @@ AR/MA & 0 &1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13\\
 \end{table} 
 
 \subsection{Volatility Equation}
-Based on the Figure \ref{cf_AMZN}.(d), there is a sudden cutoff at lag-1 squared $a_t^2$. Hence, we entertain an ARCH(1) model and a GARCH(1,1) model for the volatility and we specify the model as the following:
+Based on the Figure \ref{cf_AMZN}.(d), there is a sudden cutoff at lag-1 squared $a_t$. Hence, we entertain an ARCH(1) model and a GARCH(1,1) model for the volatility and we specify the model as the following:
 \[ r_t = \mu+a_t, a_t = \sigma_t \epsilon_t \]
 \[ \text{ARCH(1): } \sigma_t^2 = \alpha_0+\alpha_1 a_{t-1}^2 \]
 \[ \text{GARCH(1,1): } \sigma_t^2= \alpha_0+\alpha_1 a_{t-1}^2+\beta_1 \sigma_{t-1}^2 \]
@@ -354,6 +355,34 @@ Table \ref{predict} shows the mean and volatility forecasts for the daily log re
 \label{predict}
 \end{figure}
 \newpage
+
+Finally, to forecast the volatility of AMZN stock, we can use the volatility equation $\sigma_t^2 = 1.02+0.129a_{t-1}^2+0.637\sigma_{t-1}^2$. The 1-step-ahead forecast is then $\sigma_{h+1}^2 = 1.02+0.129a_h^2+0.637\sigma_h^2$, where $a_h$ is the residual of the mean equation at time $h$ and $\sigma_h$ is obtained from the volatility equation. For multistep-ahead forecasts, we substitute our forecasts recursively. Table \ref{fc_amzn} shows some mean and volatility forecasts for the AMZN stock. Here, the unit for Log Return is \%.
+
+\begin{table}
+\caption{Volatility Forecasts for AMZN Stock}
+  \centering
+\begin{tabular}[!htbp]{c|ccccccc}
+\hline Horizon & 1 & 2 & 3 & 4 & 5 & $\infty$ \\ 
+\hline Log Return & 0.1367 & 0.1367 & 0.1367 & 0.1367 & 0.1367 & 0.1367 \\
+Volatility & 1.8940 & 1.9410 & 1.9763 &  2.0029 & 2.0230 & 2.0876\\
+\hline
+\end{tabular}
+\label{fc_amzn}
+\end{table}
+
+Similarly, we provide mean and volatility forecasts for the WMT stock in Table \ref{fc_wmt}.
+\begin{table}
+\caption{Volatility Forecasts for AMZN Stock}
+  \centering
+\begin{tabular}[!htbp]{c|ccccccc}
+\hline Horizon & 1 & 2 & 3 & 4 & 5 & $\infty$ \\ 
+\hline Log Return & 0.0240 & 0.0240 & 0.0240 & 0.0240 & 0.0240 & 0.0240 \\
+Volatility & 0.8920 & 0.9563 & 0.9462 & 0.9608 & 1.0069 & 1.0338\\
+\hline
+\end{tabular}
+\label{fc_wmt}
+\end{table}
+
 
 %%%%%%%%%%%%%%%%%%%%%%   Conclusion   %%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
