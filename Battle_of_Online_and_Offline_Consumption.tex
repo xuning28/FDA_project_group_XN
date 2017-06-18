@@ -161,7 +161,8 @@ where $\epsilon_t \sim N(0,1)$.
 
 
 %%%%%%%%%%%%%%%%%%%   Comparison & Estimation   %%%%%%%%%%%%%%%%%%%%
-\section{Model Comparison and Estimation}
+\section{Estimation Analysis}
+\subsection{Estimation and Model comparison}
 To determine the more adequate model for Amazon stock, we perform the Ljung-Box test for the standardized residuals and the squared standardized residuals. However, there is no evident difference between ARCH(1) model and GARCH(1,1) model according to the test results in Table \ref{lb_AMZN}. Then we use log likelihhod and information criteria to compare models and derive the estimation results in Table \ref{est_AMZN}.
 
 \begin{table}[!htbp] \centering 
@@ -269,13 +270,94 @@ Following the same logic above and combining the results in Table \ref{lb_WMT} a
 \[ r_t = 0.024+a_t\]
 \[ a_t = \sigma_t \epsilon_t, \epsilon_t \sim N(0,1) \]
 \[ \sigma_t^2 = 0.773+0.13a_{t-1}^2+0.034a_{t-3}^2+0.112a_{t-4}^2 \]
-\newpage
+
+For each model mentioned above, we also estimated a similar one with innovation follows student-t distribution correspondingly. All the models with student-t distributed innovation have adequate mean and volatility equations, but when we concern the values of their log likelihood, AIC and BIC, we find that they are less appropriate than their counterparts, the ones with normal innovation. So we will still use the models with normal innovation assumption for further estimation. 
+
+\subsection{Results Analysis}
+Figure \ref{vol_stdr_amzn} shows the estimated volatility process and the standardized shocks for the log return series of Amazon stock based on the proposed GARCH(1,1) model.
+
+\begin{figure}[!htbp]
+\begin{minipage}[!htbp]{0.5\linewidth}
+\centering
+\includegraphics[scale = 0.45]{img/vol_AMZN}
+\end{minipage}
+\begin{minipage}[!htbp]{0.5\linewidth}
+\centering
+\includegraphics[scale = 0.45]{img/stdr_AMZN}
+\end{minipage}
+\caption{Estimated Volatility Process and Standardized Shocks for AMZN}
+\label{vol_stdr_amzn}
+\end{figure}
+
+Figure \ref{vol_stdr_wmt} shows the estimated volatility process and the standardized shocks for the log return series of Walmart stock based on the proposed ARCH(4) model. The volatility denotes the conditional standard deviation.
+
+\begin{figure}[!htbp]
+\begin{minipage}[!htbp]{0.5\linewidth}
+\centering
+\includegraphics[scale = 0.45]{img/vol_WMT}
+\end{minipage}
+\begin{minipage}[!htbp]{0.5\linewidth}
+\centering
+\includegraphics[scale = 0.45]{img/stdr_WMT}
+\end{minipage}
+\caption{Estimated Volatility Process and Standardized Shocks for WMT}
+\label{vol_stdr_wmt}
+\end{figure}
+
+Comparing the volatility of the log return series of Amazon and Walmart from 2010 to 2016, we can find that Amazon’s volatility is higher and more volatile than that of Walmart. This could probably be explained by two alternative reasons. The first one is that the expectation of Amazon's stock may be stronger than that of Walmart. Stock prices reflect the expected value of a firm. The more frequent the change of the expectation of a firm's future value, the more volatile the firm's stock price and thus the more volatile the stock's return. People hold a stronger expectation of Amazon’s future value and adjust their expectation more often. As a result, the price and return of Amazon's stock is more volatile. Figure \ref{price} shows the stock prices of Amazon and Walmart from 2010 to 2016. We can see that the stock price of Amazon has surged sharply from 2010 to 2017. The stock price of Amazon is below 200 at the beginning of the year 2010 but around 800 at the end of the year 2016. However, the stock price of Walmart has not risen that much. At the beginning of the year 2010, it is between 40 and 50 and at the end of the year 2016, it is around 70. The highest appeared in 2015, which is around 80.
+
+\begin{figure}[!htbp]
+\begin{minipage}[!htbp]{0.5\linewidth}
+\centering
+\includegraphics[scale = 0.45]{img/price_AMZN}
+\end{minipage}
+\begin{minipage}[!htbp]{0.5\linewidth}
+\centering
+\includegraphics[scale = 0.45]{img/price_WMT}
+\end{minipage}
+\caption{Stock Price of AMZN and WMT}
+\label{price}
+\end{figure}
+
+Another possible reason could be that the market of Amazon's stock is hotter and more prosperous than Walmart's. There may be more participants in the Amazon's stock market. Consequently, the price of Amazon's stock exhibits higher volatility and so does its stock return. However, further observation of the trading volumes of the two stocks contradicts this guess. Figure \ref{volume} shows the trading volumes of the stocks of Amazon and Walmart from 2010 to 2016. We cannot observe a significant larger amount of trading volume in Amazon's stock market. In fact, the trading volume of Walmart's stock is higher than Amazon's in those years.
+
+\begin{figure}[!htbp]
+\begin{minipage}[!htbp]{0.5\linewidth}
+\centering
+\includegraphics[scale = 0.45]{img/volume_AMZN}
+\end{minipage}
+\begin{minipage}[!htbp]{0.5\linewidth}
+\centering
+\includegraphics[scale = 0.45]{img/volume_WMT}
+\end{minipage}
+\caption{Trading Volume of AMZN and WMT}
+\label{volume}
+\end{figure}
+
+Both the standardized residual series of Amazon and Walmart look like white noise process, the validity of which are proved by the results of the Ljung-Box tests of the standardized residuals mentioned above.
 
 %%%%%%%%%%%%%%%%%%%%%%   Prediction   %%%%%%%%%%%%%%%%%%%%%%%
 \section{Prediction}
+Table \ref{predict} shows the mean and volatility forecasts for the daily log return of Amazon and Walmart. The volatility denotes the conditional standard deviation. As for the stock of Walmart, when the forecast horizon goes to infinity, the return will converge to 0.137\% and the volatility will converge to 2.087795. As for the stock of Walmart, when the forecast horizon goes to infinity, the return will converge to 0.024\% and the volatility will converge to 1.0338010. 
+
+\begin{figure}[!htbp]
+\begin{minipage}[!htbp]{0.5\linewidth}
+\centering
+\includegraphics[scale = 0.45]{img/predict_AMZN}
+\end{minipage}
+\begin{minipage}[!htbp]{0.5\linewidth}
+\centering
+\includegraphics[scale = 0.45]{img/predict_WMT}
+\end{minipage}
+\caption{Prediction of Volatility of AMZN and WMT}
+\label{predict}
+\end{figure}
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%   Conclusion   %%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
+In conclusion, based on our modeling and analysis, both the mean and the volatility of the log return series of Amazon is higher than Walmart’s. The mean reflects the average return and the volatility reflects the risk of holding the stock. This result is consistent with our common sense, higher return is accompanied by higher risk.  
+The bugle has sounded. The battle between Amazon and Walmart has already started. Who will be the winner still remains unclear. So just wait and see.
 
 %%%%%%%%%%%%%%%%%%%%%%   Appendix   %%%%%%%%%%%%%%%%%%%%%%%
 \section{Appendix}
