@@ -126,7 +126,7 @@ According to the Figure \ref{cf_AMZN}.(b), the daily log returns of Amazon stock
 
 The $a_t^2$ series is then used to check for conditional heteroscedasticity (ARCH effects). To consolidate the observation results in Figure \ref{cf_AMZN}.(c), the ARCH effect exists in log return series, we perform the Ljung–Box statistics Q(m) to the $\{a_t^2\}$ series. The null hypothesis is that the first m lags of ACF of the $a_t^2$ series are zero. The results of Ljung–Box test shows an ARCH effect exists in this log return series with Q(5) = 9.6519, the p-value of which is close to zero.
 
-Using the same method above to analyze the ACF and PACF of WMT log returns shown in Figure \ref{cf_WMT}, we conclude that the WMT log returns' mean equation is also an ARMA(0,0) process. And there exists an ARCH effect in WMT's log return series. Although someone may argues that Figure \ref{cf_WMT} shows significant correlation at lag-14 and lag-27, the EACF results in Table \ref{eacf_WMT} provides the evidence that ARMA(0,0) is proper. 
+Using the same method above to analyze the ACF and PACF of WMT log returns shown in Figure \ref{cf_WMT}, we conclude that the WMT log returns' mean equation is also an ARMA(0,0) process. And there exists an ARCH effect in WMT's log return series. Although someone may argue that Figure \ref{cf_WMT} shows significant correlation at lag-14 and lag-27, the EACF results in Table \ref{eacf_WMT} provide the evidence that ARMA(0,0) is proper. 
 
 \begin{table}[!htbp] \centering 
   \caption{EACF of Log Returns of Walmart Stock} 
@@ -273,7 +273,7 @@ Following the same logic above and combining the results in Table \ref{lb_WMT} a
 \[ a_t = \sigma_t \epsilon_t, \epsilon_t \sim N(0,1) \]
 \[ \sigma_t^2 = 0.773+0.13a_{t-1}^2+0.034a_{t-3}^2+0.112a_{t-4}^2 \]
 
-For each model mentioned above, we also estimated a similar one with innovation follows student-t distribution correspondingly. All the models with student-t distributed innovation have adequate mean and volatility equations, but when we concern the values of their log likelihood, AIC and BIC, we find that they are less appropriate than their counterparts, the ones with normal innovation. So we will still use the models with normal innovation assumption for further estimation. 
+For each model mentioned above, we also estimated a similar one with a innovation that follows a student-t distribution correspondingly. All the models with student-t innovations have adequate mean and volatility equations, but when we concern the values of their log likelihood, AIC and BIC, we find that they are less appropriate than their counterparts, the ones with normal innovations. So we will still use the models with normal innovation assumption for further estimation. 
 
 \subsection{Results Analysis}
 Figure \ref{vol_stdr_amzn} shows the estimated volatility process and the standardized shocks for the log return series of Amazon stock based on the proposed GARCH(1,1) model.
@@ -366,7 +366,7 @@ Volatility & 0.8920 & 0.9563 & 0.9462 & 0.9608 & 1.0069 & 1.0338\\
 \label{fc_wmt}
 \end{table}
 
-To make the forecasting results more visualized, Figure \ref{predict} shows the forecasted mean and the corresponding fluctuating range (blue line) based on the forecasted volatility under 5\% significant level for the daily log return of Amazon and Walmart stocks. We also add in the true log returns (red line) from 2017 Jan. 3rd to Jun. 16th, pulled from Wind Terminal. The volatility denotes the conditional standard deviation. As for the stock of Amazon, when the forecast horizon goes to infinity, the return will converge to 0.14\% and the volatility will converge to 2.09. As for the stock of Walmart, when the forecast horizon goes to infinity, the return will converge to 0.02\% and the volatility will converge to 1.03. Obviously, the volatility prediction for AMZN is more efficient because all true values are in the predicted fluctuating range. However, some true values pierce the predicted range, which indicating the prediction is not very accurate.
+To make the forecasting results more visualized, Figure \ref{predict} shows the forecasted mean and the corresponding fluctuating range (blue line) based on the forecasted volatility under 5\% significant level for the daily log return of Amazon and Walmart stocks. We also add in the true log returns (red line) from 2017 Jan. 3rd to Jun. 16th, pulled from Wind Terminal. The volatility denotes the conditional standard deviation. As for the stock of Amazon, when the forecast horizon goes to infinity, the return will converge to 0.14\% and the volatility will converge to 2.09. As for the stock of Walmart, when the forecast horizon goes to infinity, the return will converge to 0.02\% and the volatility will converge to 1.03. Obviously, the volatility prediction for AMZN is more efficient because all true values are in the predicted fluctuating range. However, some true values pierce the predicted range, which indicates the prediction is not very accurate.
 
 \begin{figure}[!htbp]
 \begin{minipage}[!htbp]{0.5\linewidth}
@@ -383,7 +383,8 @@ To make the forecasting results more visualized, Figure \ref{predict} shows the 
 
 %%%%%%%%%%%%%%%%%%%%%%   Conclusion   %%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
-In conclusion, based on our modeling and analysis, both the mean and the volatility of the log return series of Amazon is higher than Walmart’s. The mean reflects the average return and the volatility reflects the risk of holding the stock. This result is consistent with our common sense, higher return is accompanied by higher risk.  
+In conclusion, based on our modeling and analysis, both the mean and the volatility of the log return series of Amazon is higher than Walmart’s. The mean reflects the average return and the volatility reflects the risk of holding the stock. This result is consistent with our common sense, higher return is accompanied by higher risk. 
+With the rapid development of e-commerce, the operating income of Amazon has increased for three years so far. By contrast, the operating income of Walmart is not as good as Amazon’s. As a traditional physical retail store, Walmart bears higher operating cost than Amazon, the online retail hegemony nowadays. Recently, the market value of Amazon’s stock is almost twice as large as Walmart’s. And there is a huge potential that the stock price of Amazon continues to rise in the following years. Amazon has been continuously reducing its logistics costs, which will effectively raise its operating profit. With the introduction of cloud computing service, Amazon is providing customers with more and more attractive and powerful service at lower price. Besides, Amazon is expected to generate more profit by its video service and business in more various fields. But Walmart is not waiting to be left behind. It has exerted great efforts in reversing the situation. In 2016, Walmart purchased the famous e-commerce start-up company, Jet.com in order to acquire more talents in e-commerce. Attaching more importance in e-commerce may help Walmart become more competitive.  
 The bugle has sounded. The battle between Amazon and Walmart has already started. Who will be the winner still remains unclear. So just wait and see.
 
 \begin{thebibliography}{99}
