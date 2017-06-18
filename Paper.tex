@@ -317,7 +317,7 @@ Comparing the volatility of the log return series of Amazon and Walmart from 201
 \centering
 \includegraphics[scale = 0.45]{img/price_WMT}
 \end{minipage}
-\caption{Stock Price of AMZN and WMT}
+\caption{Stock Prices}
 \label{price}
 \end{figure}
 
@@ -332,7 +332,7 @@ Another possible reason could be that the market of Amazon's stock is hotter and
 \centering
 \includegraphics[scale = 0.45]{img/volume_WMT}
 \end{minipage}
-\caption{Trading Volume of AMZN and WMT}
+\caption{Trading Volumes}
 \label{volume}
 \end{figure}
 
@@ -340,22 +340,7 @@ Both the standardized residual series of Amazon and Walmart look like white nois
 
 %%%%%%%%%%%%%%%%%%%%%%   Prediction   %%%%%%%%%%%%%%%%%%%%%%%
 \section{Prediction}
-Table \ref{predict} shows the mean and volatility forecasts for the daily log return of Amazon and Walmart. The volatility denotes the conditional standard deviation. As for the stock of Walmart, when the forecast horizon goes to infinity, the return will converge to 0.14\% and the volatility will converge to 2.09. As for the stock of Walmart, when the forecast horizon goes to infinity, the return will converge to 0.02\% and the volatility will converge to 1.03. 
-
-\begin{figure}[!htbp]
-\begin{minipage}[!htbp]{0.5\linewidth}
-\centering
-\includegraphics[scale = 0.45]{img/predict_AMZN}
-\end{minipage}
-\begin{minipage}[!htbp]{0.5\linewidth}
-\centering
-\includegraphics[scale = 0.45]{img/predict_WMT}
-\end{minipage}
-\caption{Prediction of Volatility of AMZN and WMT}
-\label{predict}
-\end{figure}
-
-Finally, to forecast the volatility of AMZN stock, we can use the volatility equation $\sigma_t^2 = 1.02+0.129a_{t-1}^2+0.637\sigma_{t-1}^2$. The 1-step-ahead forecast is then $\sigma_{h+1}^2 = 1.02+0.129a_h^2+0.637\sigma_h^2$, where $a_h$ is the residual of the mean equation at time $h$ and $\sigma_h$ is obtained from the volatility equation. For multistep-ahead forecasts, we substitute our forecasts recursively. Table \ref{fc_amzn} shows some mean and volatility forecasts for the AMZN stock. Here, the unit for Log Return is in percentage (\%).
+Finally, to forecast the volatility of AMZN stock, we can use the volatility equation $\sigma_t^2 = 1.02+0.129a_{t-1}^2+0.637\sigma_{t-1}^2$. The 1-step-ahead forecast is then $\sigma_{h+1}^2 = 1.02+0.129a_h^2+0.637\sigma_h^2$, where $a_h$ is the residual of the mean equation at time $h$ and $\sigma_h$ is obtained from the volatility equation. For multistep-ahead forecasts, we substitute our forecasts recursively. Table \ref{fc_amzn} shows some mean and volatility forecasts for the AMZN stock. Here, the unit for Log Return is in percentage (\%). Similarly, we provide mean and volatility forecasts for the WMT stock in Table \ref{fc_wmt}.
 
 \begin{table}
 \caption{Volatility Forecasts for AMZN Stock}
@@ -369,7 +354,6 @@ Volatility & 1.8940 & 1.9410 & 1.9763 &  2.0029 & 2.0230 & 2.0876\\
 \label{fc_amzn}
 \end{table}
 
-Similarly, we provide mean and volatility forecasts for the WMT stock in Table \ref{fc_wmt}.
 \begin{table}
 \caption{Volatility Forecasts for AMZN Stock}
   \centering
@@ -382,6 +366,20 @@ Volatility & 0.8920 & 0.9563 & 0.9462 & 0.9608 & 1.0069 & 1.0338\\
 \label{fc_wmt}
 \end{table}
 
+To make the forecasting results more visualized, Figure \ref{predict} shows the forecasted mean and the corresponding fluctuating range (blue line) based on the forecasted volatility under 5\% significant level for the daily log return of Amazon and Walmart stocks. We also add in the true log returns (red line) from 2017 Jan. 3rd to Jun. 16th, pulled from Wind Terminal. The volatility denotes the conditional standard deviation. As for the stock of Amazon, when the forecast horizon goes to infinity, the return will converge to 0.14\% and the volatility will converge to 2.09. As for the stock of Walmart, when the forecast horizon goes to infinity, the return will converge to 0.02\% and the volatility will converge to 1.03. Obviously, the volatility prediction for AMZN is more efficient because all true values are in the predicted fluctuating range. However, some true values pierce the predicted range, which indicating the prediction is not very accurate.
+
+\begin{figure}[!htbp]
+\begin{minipage}[!htbp]{0.5\linewidth}
+\centering
+\includegraphics[scale = 0.45]{img/predict_AMZN}
+\end{minipage}
+\begin{minipage}[!htbp]{0.5\linewidth}
+\centering
+\includegraphics[scale = 0.45]{img/predict_WMT}
+\end{minipage}
+\caption{Mean (black), True Value (red) and Predicted Volatility (blue) of Log returns}
+\label{predict}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%   Conclusion   %%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}

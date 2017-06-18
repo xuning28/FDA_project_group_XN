@@ -44,14 +44,15 @@ plot(col='blue',y=sres_1,x=AMZN$date,xlab='year', ylab='Standardized Residuals o
 ## Prediction
 load("F:/CUEB/Junior/SPRING/FDA/FDA_project_group_XN/data/AMZN2017.RData")
 
+AMZN2017 = AMZN2017[-115,]
 logreturn2017 = diff(log(AMZN2017$close))*100
 print(logreturn2017)
-sigma2=predict(m2,114)
+sigma2=predict(m2,113)
 print(sigma2)
 
 library(sciplot)
-plot(c(1:114),sigma2$meanForecast,ylim=c(-3.0,3.0),type = "l")
-lines(c(1:114),logreturn2017,col='red')
-lines(c(1:114),sigma2$meanForecast+1.96*sigma2$meanError,col='blue')
-lines(c(1:114),sigma2$meanForecast-1.96*sigma2$meanError,col='blue')
+plot(c(1:113),sigma2$meanForecast,ylim=c(-5.0,5.0),type = "l",xlab = "Future Time",ylab = "Forecasting Value", main = "prediction of log returns of AMZN")
+lines(c(1:113),logreturn2017,col='red')
+lines(c(1:113),sigma2$meanForecast+1.96*sigma2$meanError,col='blue')
+lines(c(1:113),sigma2$meanForecast-1.96*sigma2$meanError,col='blue')
 
