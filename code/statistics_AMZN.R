@@ -2,8 +2,11 @@ library(xts)
 library(xtable)
 library(lubridate)
 library(readxl)
-AMZN <- read_excel("~/Desktop/ThirdYear2/Financial_Data_Analysis/TimeSeries2/FDA_project_group_XN/data/AMZN.xlsx",
+
+AMZN <- read_excel("../data/AMZN.xlsx", 
 col_types = c("date", "numeric", "numeric", "numeric", "numeric", "numeric"))
+# use the relative path
+
 
 # data statistics
 AMZN = AMZN[-1763:-1764,]

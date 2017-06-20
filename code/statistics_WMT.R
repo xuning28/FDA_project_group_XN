@@ -2,8 +2,9 @@ library(xts)
 library(xtable)
 library(lubridate)
 library(readxl)
-WMT <- read_excel("~/Desktop/ThirdYear2/Financial_Data_Analysis/TimeSeries2/FDA_project_group_XN/data/WMT.xlsx",
+WMT <- read_excel("../data/WMT.xlsx",
                    col_types = c("date", "numeric", "numeric", "numeric", "numeric", "numeric"))
+# use the relative path
 
 # data statistics
 WMT = WMT[-1763:-1764,]
